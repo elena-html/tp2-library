@@ -1,0 +1,50 @@
+Group Name : 
+Azib ilina g01
+ben abdallah melak g01
+
+
+Answers to the TP Questions
+(a) Working directory, staging area, repository:
+
+Working Directory: The actual files on disk that you edit.
+Staging Area (Index): The intermediate area holding changes prepared for the next commit (git add moves changes here; git restore --staged un-stages them).
+Repository: The permanent database of commit objects and history stored in .git/ (git commit takes staged changes and records them as a commit).
+(b) What git status displays:
+
+After modifying Book.java: Lists Book.java in red under "Changes not staged for commit".
+After git add Book.java: Lists Book.java in green under "Changes to be committed".
+After git commit: Displays "nothing to commit, working tree clean".
+(c) Why target/ must not be committed:
+
+target/ contains compiled .class files, test reports, and JAR artifacts produced by Maven. Committing generated files bloats repository size, causes unnecessary merge conflicts, and violates reproducibility (artifacts should be built from source).
+(d) Good commit messages and small commits:
+
+A good commit message uses the imperative mood (e.g. "Add book title search"), is concise, and describes what and why rather than how.
+Small, atomic commits make code reviews straightforward, pinpoint regressions during git bisect, and allow clean rollbacks or cherry-picks.
+(e) Branch, HEAD, and why search disappeared in Step 3:
+
+A branch is a lightweight, movable pointer to a specific commit.
+HEAD is a reference pointing to the currently active branch or commit.
+In step 3, switching to main moved HEAD to main's latest commit, where the commits and files added on feature/search did not yet exist.
+(f) Fast-forward vs. Merge Commit:
+
+Fast-forward: Occurs when the target branch has no new commits since the feature branch was created; Git simply advances the target pointer forward without creating a new commit.
+Merge Commit (3-way merge): Required when both branches have diverged (each has new commits since their common ancestor); Git creates a new commit having two parent commits.
+(g) Why the conflict occurred:
+
+Both main and feature/search modified the exact same line (line 1 of 
+
+README.md
+) in conflicting ways since their common ancestor. Git cannot guess human intent (whether to keep one, the other, or combine both), so it pauses and requires manual resolution.
+(h) git fetch vs git pull & git clone vs git pull:
+
+git fetch downloads remote commits/branches without merging them into your working tree; git pull does a git fetch followed by a git merge.
+git clone initializes a brand new local repository by copying a remote repository; git pull updates an existing local branch from its remote tracking branch.
+(i) Unified Process & XP:
+
+Unified Process: Supports the Configuration and Change Management discipline (tracking revisions, baselines, and changes).
+Extreme Programming (XP): Supports Continuous Integration, Collective Code Ownership, and Small Releases.
+
+
+
+
