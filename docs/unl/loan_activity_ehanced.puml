@@ -1,0 +1,22 @@
+@startuml
+
+start
+
+:Select member;
+:Check borrowing rights;
+
+if (Rights valid?) then (Yes)
+
+  :Enter book ID;
+  :Record loan;
+  :Update database;
+
+else (No)
+
+  :Refuse loan;
+
+endif
+
+stop
+
+@enduml
