@@ -1,0 +1,31 @@
+@startuml
+
+start
+
+:Receive returned copy;
+:Identify copy;
+
+if (Copy currently on loan?) then (Yes)
+  :Find active loan;
+  :Close loan;
+
+  if (Returned late?) then (Yes)
+    :Suspend member;
+  endif
+
+  if (Book reserved?) then (Yes)
+    :Set copy aside;
+    :Notify reserving member via Mail server;
+  else (No)
+    :Mark copy available;
+  endif
+
+  :Print the receipt;
+else (No)
+  :Display an error message;
+  stop
+endif
+
+stop
+
+@enduml

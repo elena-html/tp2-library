@@ -1,0 +1,24 @@
+@startuml
+
+start
+
+:Select member;
+:Check borrowing rights;
+
+if (Borrowing rights valid?) then (Yes)
+  repeat
+    :Scan a copy;
+    if (Copy available and not reserved?) then (Yes)
+      :Record loan;
+    else (No)
+      :Skip this copy;
+    endif
+  repeat while (Another copy?) is (Yes) not (No)
+  :Print the receipt;
+else (No)
+  :Refuse loan;
+endif
+
+stop
+
+@enduml
